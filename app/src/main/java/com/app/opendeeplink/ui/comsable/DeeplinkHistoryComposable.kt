@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -74,7 +75,7 @@ fun DeeplinkItem(
         Row(
             modifier = Modifier
                 .padding(8.dp)
-                .height(32.dp)
+                .height(40.dp)
                 .fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,
         ) {
@@ -84,21 +85,36 @@ fun DeeplinkItem(
                 text = deeplink,
             )
 
-            IconButton(onClick = { copyLink(deeplink) }) {
+            IconButton(
+                modifier = Modifier
+                    .padding(8.dp, 0.dp, 0.dp, 0.dp)
+                    .size(30.dp),
+                onClick = { copyLink(deeplink) },
+            ) {
                 Icon(
                     imageVector = Icons.Default.Edit,
                     contentDescription = stringResource(R.string.copy),
                 )
             }
 
-            IconButton(onClick = { deleteLink(deeplink) }) {
+            IconButton(
+                modifier = Modifier
+                    .padding(8.dp, 0.dp, 0.dp, 0.dp)
+                    .size(30.dp),
+                onClick = { deleteLink(deeplink) },
+            ) {
                 Icon(
                     imageVector = Icons.Default.Delete,
                     contentDescription = stringResource(R.string.delete)
                 )
             }
 
-            IconButton(onClick = { openLink(deeplink) }) {
+            IconButton(
+                modifier = Modifier
+                    .padding(8.dp, 0.dp, 0.dp, 0.dp)
+                    .size(30.dp),
+                onClick = { openLink(deeplink) },
+            ) {
                 Icon(
                     imageVector = Icons.Default.PlayArrow,
                     contentDescription = stringResource(R.string.open_deeplink)
