@@ -11,8 +11,8 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.PlayArrow
-import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -30,13 +30,14 @@ import com.app.opendeeplink.R
  */
 @Composable
 fun DeeplinkHistory(
+    modifier: Modifier = Modifier,
     deeplinkList: List<String>,
     copyLink: (deeplink: String) -> Unit,
     deleteLink: (deeplink: String) -> Unit,
     openLink: (deeplink: String) -> Unit,
 ) {
 
-    Column {
+    Column(modifier = modifier) {
         Text(
             modifier = Modifier
                 .padding(8.dp),
@@ -77,6 +78,7 @@ fun DeeplinkItem(
                 .fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,
         ) {
+
             Text(
                 modifier = Modifier.weight(1f),
                 text = deeplink,
@@ -84,7 +86,7 @@ fun DeeplinkItem(
 
             IconButton(onClick = { copyLink(deeplink) }) {
                 Icon(
-                    imageVector = Icons.Default.Share,
+                    imageVector = Icons.Default.Edit,
                     contentDescription = stringResource(R.string.copy),
                 )
             }

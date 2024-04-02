@@ -2,7 +2,7 @@
     <string name="app_name">Open Deeplink</string>
     <string name="open_deeplink">Open deeplink</string>
     <string name="history">History</string>
-    <string name="unable_to_open_deeplink">Unable to open deeplink.</string>
+    <string name="unable_to_open_deeplink">Unable to open deeplink "%s".</string>
     <string name="clear">clear</string>
     <string name="deeplink">Deeplink</string>
     <string name="schemeExample" translatable="false">scheme://</string>

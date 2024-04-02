@@ -1,11 +1,6 @@
 package com.app.opendeeplink.ui.comsable
 
 
-import android.content.ActivityNotFoundException
-import android.content.Context
-import android.content.Intent
-import android.net.Uri
-import android.widget.Toast
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.scaleIn
@@ -28,7 +23,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
@@ -39,10 +33,9 @@ import com.app.opendeeplink.R
  * Display an [OutlinedTextField] to enter a deeplink with a button to open this deeplink
  */
 @Composable
-fun DeeplinkInputField() {
+fun DeeplinkInputField(openDeeplink: (String) -> Unit) {
 
     var deeplink by remember { mutableStateOf("") }
-    val context = LocalContext.current
 
     Column(
         Modifier.padding(8.dp),
@@ -82,37 +75,15 @@ fun DeeplinkInputField() {
             modifier = Modifier
                 .padding(top = 8.dp)
                 .align(Alignment.End),
-            onClick = {
-                openDeeplinkIntent(context = context, deeplink = deeplink)
-            }
+            onClick = { openDeeplink(deeplink) }
         ) {
             Text(text = stringResource(R.string.open_deeplink))
         }
     }
 }
 
-/**
- * @return true if the deeplink has been caught by an app, false otherwise.
- */
-private fun openDeeplinkIntent(context: Context, deeplink: String): Boolean {
-    val i = Intent(Intent.ACTION_VIEW)
-    i.setData(Uri.parse(deeplink))
-    try {
-        context.startActivity(i)
-        saveDeeplink(deeplink)
-        return true
-    } catch (e: ActivityNotFoundException) {
-        Toast.makeText(context, context.getString(R.string.unable_to_open_deeplink), Toast.LENGTH_SHORT).show()
-    }
-    return false
-}
-
-private fun saveDeeplink(deeplink: String) {
-    // todo
-}
-
 @Preview(showBackground = true)
 @Composable
 fun DeeplinkInputFieldPreview() {
-    DeeplinkInputField()
+    DeeplinkInputField {}
 }
