@@ -6,4 +6,6 @@
     <string name="clear">clear</string>
     <string name="deeplink">Deeplink</string>
     <string name="schemeExample" translatable="false">scheme://</string>
+    <string name="copy">Copy</string>
+    <string name="delete">Delete</string>
 </resources>
