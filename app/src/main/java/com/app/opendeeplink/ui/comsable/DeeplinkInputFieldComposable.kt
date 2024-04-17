@@ -33,7 +33,9 @@ import com.app.opendeeplink.R
  * Display an [OutlinedTextField] to enter a deeplink with a button to open this deeplink
  */
 @Composable
-fun DeeplinkInputField(openDeeplink: (String) -> Unit) {
+fun DeeplinkInputField(
+    openDeeplink: (String) -> Unit
+) {
 
     var deeplink by remember { mutableStateOf("") }
 
